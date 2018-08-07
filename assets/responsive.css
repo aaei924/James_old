@@ -1,0 +1,10 @@
+.b {font-weight:600 !important;} .text-black{color:#000!important}
+@media (max-width: 798px) {
+	.no-mb {display:none !important;}
+	.cwe .footer-div {
+		border-bottom:1px solid rgba(0, 0, 0, 0.125);
+	}
+}
+@media (min-width: 798px) {
+	.no-pc {display:none !important;}
+}

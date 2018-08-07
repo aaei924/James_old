@@ -1,0 +1,117 @@
+.cwe {
+    .btn {cursor: pointer;}
+    .btn-xs {
+        padding: 1px 5px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .btn-nav-search {
+        color: #111;
+        background-color: #fff;
+        padding: 0.5rem 0.55rem;
+        border-color: #ccc;
+        border-left:0;
+      }
+      .btn-nav-search:hover {background-color: #e6e6e6;}
+      .btn-random {border-right:0;border-color:#ccc;border-left:1px solid #ccc;}
+      .btn-white {
+        color: #111;
+        background-color: #fff;
+        border-color: #ccc;
+      }
+      .btn-white:hover {background-color: #e6e6e6;}
+      .nav-search {
+        outline:none;
+        border-color:#ccc;
+        background-color:#fff;
+      }
+      .wiki-wrapper {
+          max-width: 1200px;
+          margin:0 auto;
+      }
+      .padding-0 {
+          padding:0;
+      }
+      .navbar {
+          padding:0.2rem 1rem;
+        .navbar-user {
+            float:right;
+            color:white;
+            margin-left: 15px;
+            a {color:#fff;font-size:20px;}
+        }
+       }
+      .wiki-div {
+          margin-top:0.4rem;
+          margin-bottom:0.4rem;
+          .col-md-9 {
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            padding: 1.5rem;
+          }
+      }
+      .recentchange .list-group-item{
+          padding: 0.2rem 0.4rem;
+          .pull-right {
+            color: #888;
+          }
+        }
+     .footer-div {
+        background-color: white;
+        margin-top:5px;
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+        border-bottom: 6px solid #35bb9b;
+        .footer-wrapper {
+            margin: 0 auto;
+            padding: 1.2rem;
+            text-align: center;
+        }
+     }
+     .title {
+        font-weight: bold;font-size: 2.2rem;margin-bottom: 1rem;
+     }
+     // rccard
+     .rc-card {
+         margin-top:0.8rem;
+     }
+     .rc-card-top {
+         .card-title {margin:0;}
+     }
+     .rc-card-bottom {
+         padding:0.4rem;
+     }
+     .mobile {display:none}
+}
+@media (max-width: 1000px){
+    .cwe {
+        .wiki-wrapper {
+            .col-md-9{
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .col-md-3{
+                display:none;
+            }
+        }
+        .pc {display:none !important;}
+        .mobile {display:block !important}
+    }
+}
+@media (max-width: 798px){
+    .cwe {
+        .nav-link .hidden {
+            display:none
+        }
+        .navbar-nav{
+            flex-direction: row;
+            .nav-item {
+                margin-right: 7px;
+            }
+        }
+        .navbar .form-inline {
+            width:100%;
+        }
+        .navbar .form-inline .input-group {
+            width: 100%;
+        }
+    }
+}

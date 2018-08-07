@@ -1,0 +1,65 @@
+
+
+// Semantic color scheme
+$theme-colors: (
+  primary: #47cead,
+  secondary: #35bb9b,
+  success: #28a745,
+  info: #00fbff,
+  warning: #ffc107,
+  danger: #dc3545,
+  light: #f8f9fa,
+  dark: #343a40
+);
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+ 
+$enable-rounded:            true !default;
+$enable-shadows:            false;
+$enable-gradients:          false;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  false !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+// Variables
+//
+// Theme settings.
+
+$body-bg: #eee;
+
+
+$body-color: #292b2c;
+$body-color-inverse: invert($body-color) !default;
+$link-color: #2980b9;
+
+
+$font-family-base: "Noto Sans KR", sans-serif;
+$headings-font-family: "Noto Sans KR", sans-serif !default;
+
+$font-size-base: 0.9rem; // Assumes the browser default, typically `16px`
+$h1-font-size: 2.3 * $font-size-base;
+$h2-font-size: 2 * $font-size-base;
+$h3-font-size: 1.75 * $font-size-base;
+$h4-font-size: 1.5 * $font-size-base;
+$h5-font-size: 1.25 * $font-size-base;
+$h6-font-size: $font-size-base;
+
+$display1-size: 6 * $font-size-base;
+$display2-size: 5.5 * $font-size-base;
+$display3-size: 4.5 * $font-size-base;
+$display4-size: 3.5 * $font-size-base;
+
+$border-radius: 0px;
+
+$border-radius-lg: $border-radius * 1.2;
+$border-radius-sm: $border-radius * .8; 
+.cwe {
+  @import 'bootstrap-4.0.0-beta.1';
+}
+
+body > * {
+  background-size: cover;
+}
