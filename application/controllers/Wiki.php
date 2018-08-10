@@ -7,7 +7,7 @@ class Wiki extends MX_Controller {
         parent::__construct();
         $this->load->database();
 		$this->load->library('session'); // Admin 전역에서 session 사용
-		$this->load->library('NamuMark');
+		$this->load->library('namuMark');
 		$this->load->driver('cache');
     }
 	public function index()
