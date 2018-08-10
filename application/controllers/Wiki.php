@@ -7,6 +7,7 @@ class Wiki extends MX_Controller {
         parent::__construct();
         $this->load->database();
 		$this->load->library('session'); // Admin 전역에서 session 사용
+		$this->load->library('NamuMark');
 		$this->load->driver('cache');
     }
 	public function index()
@@ -35,9 +36,7 @@ class Wiki extends MX_Controller {
 				}
 			}
 				// 문서 보기 (page) (/w/문서명)
-				require_once("./php-namumark/namumark.php");
 					$data['rev'] = $rev;
-					require_once("./application/config/mark_db.php");
 					if ($rev) {
 						$rev = urldecode($rev);
 						$query = $this->db->query("SELECT * FROM `revision` WHERE doc_name = \"$ename\" AND r_num = \"$rev\"");
@@ -49,11 +48,11 @@ class Wiki extends MX_Controller {
 							if ($rev) {
 								$data['title'] = $ename;
 								$data['lmod'] = $row->date;
-								$wPage = new RevisionWikiPage($ename, $mysqli,$rev);
+								$wPage = new RevisionWikiPage($ename,$rev);
 							} else {
 								$data['title'] = $row->title;
 								$data['lmod'] = $row->last_modify;
-								$wPage = new PlainWikiPage($ename, $mysqli);
+								$wPage = new PlainWikiPage($ename);
 							}
 							$wEngine = new NamuMark($wPage);
 							$wEngine->prefix = "/w";
