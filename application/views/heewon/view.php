@@ -20,7 +20,7 @@
                 </div>
             </div>
           </h1>
-          <h4><?php if ($redir) {echo $redir."에서 넘어옴";}?></h4>
+          <?php if ($redir){ echo "<h4>".$redir."에서 넘어옴 </h4>";}?>
           <?php print_r ($text); ?>
 </div>
         </article>

@@ -59,7 +59,7 @@ class Wiki extends MX_Controller {
 							$wEngine->prefix = "/w";
 							$text = $wEngine->toHtml();
 							$redir = false;
-
+ 
 							if(!empty($this->input->get('redir'))) {
 								$redir = $this->input->get('redir');
 							}
