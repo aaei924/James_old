@@ -105,22 +105,8 @@ class A extends MX_Controller {
             {
                     $pass_enc = password_hash($password, PASSWORD_BCRYPT);
                     if( $this->db->simple_query("INSERT INTO users(email, username, password,  roles) VALUES('$email','$nickname','$pass_enc', 'default')")){
-						
-						$data = array(
-							'title' => '사용자:'.$nickname,
-							'text' => ''
-						);
-						$this->db->insert('document', $data);
-						$data = array(
-							'doc_name' => '사용자:'.$nickname,
-							'r_num' => 1,
-							'doc_text' => '',
-							'change_int' => '0',
-							'user' => $nickname
-						);
-						$this->db->insert('revision', $data);
                         echo "<script>alert(\"정상적으로 가입되셨습니다\");</script>";
-                        echo "<script>location.href='/w/';</script>";
+                        echo "<script>location.href='/a/login';</script>";
 
                     } else {
                         echo "<script>alert(\"실패!\");</script>";

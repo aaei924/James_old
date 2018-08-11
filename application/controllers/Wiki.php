@@ -69,19 +69,12 @@ class Wiki extends MX_Controller {
 
 						$this->load->view(skin.'/view', $data);
 					} else {
-						if ($rev) {
-							$data['title'] =$ename;
-							$data['text'] = "해당 문서가 존재하지 않습니다.<br><a href='/edit/".$name."'>새로 만들 수도 있어요!</a>";
-						} else {
-							$data['title'] =$ename;
-							$data['text'] = "해당 문서가 존재하지 않습니다.<br><a href='/edit/".$name."'>새로 만들 수도 있어요!</a>";
-						}
 						$redir = false;
 						if(!empty($this->input->get('redir'))) {
 							$redir = $this->input->get('redir');
 						}
 						$data['redir'] = $redir;
-
+						$data['title'] =$ename;
 						$data['text'] = "해당 문서가 존재하지 않습니다.<br><a href='/edit/".$name."'>새로 만들 수도 있어요!</a>";
 						$this->load->view(skin.'/view', $data);
 					}

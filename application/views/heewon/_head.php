@@ -30,10 +30,13 @@
                         <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
                      </svg>
                   </a>
-                  <a class="btn btn-sm btn-outline-secondary" href="/A/login">로그인</a> 
+                  <?php if (empty($this->session->userdata('username'))) {
+                  echo '<a class="btn btn-sm btn-outline-secondary" href="/A/login">로그인</a>';}
+                  else echo '<a class="btn btn-sm btn-outline-secondary" href="/A/logout">로그아웃</a>';?>
                </div>
             </div>
          </header>
          <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between"> <a class="p-2 text-muted" href="/RecentChanges">최근 변경</a> <a class="p-2 text-muted" href="/RecentDiscuss">최근 토론</a> <a class="p-2 text-muted" href="#">게시판</a> <a class="p-2 text-muted" href="/a/license">라이센스</a> <a class="p-2 text-muted" href="/a/license">위키라이브</a></nav>
+            <nav class="nav d-flex justify-content-between"> <a class="p-2 text-muted" href="/RecentChanges">최근 변경</a> <a class="p-2 text-muted" href="/RecentDiscuss">최근 토론</a> <a class="p-2 text-muted" href="#">게시판</a> <a class="p-2 text-muted" href="/a/license">라이센스</a> <a class="p-2 text-muted" href="/a/license">위키라이브</a> <?php if (!empty($this->session->userdata('username'))) {
+                 $user = $this->session->userdata('username'); echo '<a class="p-2 text-muted" href="/w/사용자:'.$user.'">내 정보</a>';}?></nav>
          </div>
