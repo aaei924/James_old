@@ -40,15 +40,15 @@ class RevisionWikiPage {
 	public $title, $text, $lastchanged;
 	function __construct($name,$rev) {
 		$CI =& get_instance(); // $CI 변수 선언
-		if(!($result = $CI->db->query('SELECT `doc_text`, `date` FROM `revision` WHERE doc_name = "'.$name.'" AND r_num = "'.$rev.'"'))) {
+		if(!($query = $CI->db->query('SELECT `doc_text`, `date` FROM `revision` WHERE doc_name = "'.$name.'" AND r_num = "'.$rev.'"'))) {
 			return false;
 		}
-		if(!($row = $result->fetch_array(MYSQLI_NUM))) {
+		if(!($row = $query->result_array()[0])) {
 			return false;
 		}
 		$this->title = $name;
-		$this->text = $row[0];
-		$this->lastchanged = $row[1]?strtotime($row[1]):false;
+		$this->text = $row['doc_text'];
+		$this->lastchanged = $row['date']?strtotime($row['date']):false;
 	}
 	function getPage($name) {
 		return new PlainWikiPage($name);
@@ -827,8 +827,8 @@ class NamuMark {
 		if ($result->num_rows == 0) {
 			$class='not-exist';
 		}
-		$result->close();
-		$$CI->db->close();
+		
+		$CI->db->close();
 		return '<a href="'.$targetUrl.'"'.(!empty($title)?' title="'.$title.'"':'').(!empty($class)?' class="'.$class.'"':'').(!empty($target)?' target="'.$target.'"':'').'>'.(!empty($href[1])?$this->formatParser($href[1]):$href[0]).'</a>';
 	}
 

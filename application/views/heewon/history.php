@@ -2,8 +2,8 @@
         <article class="col-md-9 bg-white">
           <h1 class="title">
             <?php echo $title; ?>
-            <div class="btn-group pull-right" role="group" aria-label="content-tools">
-                  <a href="/edit/<?php echo $otitle; ?>" class="btn btn-white tools-btn">편집</a>
+						<div class="btn-group pull-right" role="group" aria-label="content-tools">
+                  <a href="/w/<?php echo urlencode($otitle); ?>" class="btn btn-sm btn-outline-secondary">돌아가기</a> 
             </div>
           </h1>
 		  <form method="get" action="/diff/<?php echo $otitle; ?>" class="ddark-diff">
@@ -41,9 +41,12 @@
 				  <td><?php echo $row->r_desc ?></td>
 				  <td><?php echo $row->user ?></td>
 				  <td>
-					<a href="/w/<?php echo $otitle; ?>/<?php echo $row->r_num; ?>" class="btn btn-xs btn-white" title="해당 리비전의 내용을 봅니다.">보기</a>
-					<a href="/raw/<?php echo $otitle; ?>/<?php echo $row->r_num; ?>" class="btn btn-xs btn-white" title="해당 리비전의 raw 를 봅니다.">RAW</a>
-					<a href="/revert/<?php echo $otitle."/".$row->r_num;?>" class="btn btn-xs btn-white" title="현재 문서를 해당 리비전으로 되돌립니다.">되돌리기</a>
+					<div class="btn-group pull-right" role="group" aria-label="content-tools">
+
+					<a href="/w/<?php echo $otitle; ?>/<?php echo $row->r_num; ?>" class="btn btn-sm btn-outline-secondary" title="해당 리비전의 내용을 봅니다.">보기</a>
+					<a href="/raw/<?php echo $otitle; ?>/<?php echo $row->r_num; ?>" class="btn btn-sm btn-outline-secondary" title="해당 리비전의 raw 를 봅니다.">RAW</a>
+					<a href="/revert/<?php echo $otitle."/".$row->r_num;?>" class="btn btn-sm btn-outline-secondary" title="현재 문서를 해당 리비전으로 되돌립니다.">되돌리기</a>
+					</div>
 				  </td>
 				</tr>
 				<?php } ?>

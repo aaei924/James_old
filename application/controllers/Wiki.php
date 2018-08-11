@@ -50,6 +50,7 @@ class Wiki extends MX_Controller {
 								$data['lmod'] = $row->date;
 								$wPage = new RevisionWikiPage($ename,$rev);
 							} else {
+								
 								$data['title'] = $row->title;
 								$data['lmod'] = $row->last_modify;
 								$wPage = new PlainWikiPage($ename);
@@ -57,6 +58,12 @@ class Wiki extends MX_Controller {
 							$wEngine = new NamuMark($wPage);
 							$wEngine->prefix = "/w";
 							$text = $wEngine->toHtml();
+							$redir = false;
+
+							if(!empty($this->input->get('redir'))) {
+								$redir = $this->input->get('redir');
+							}
+							$data['redir'] = $redir;
 
 							$data['text'] = $text;
 
@@ -69,6 +76,12 @@ class Wiki extends MX_Controller {
 							$data['title'] =$ename;
 							$data['text'] = "해당 문서가 존재하지 않습니다.<br><a href='/edit/".$name."'>새로 만들 수도 있어요!</a>";
 						}
+						$redir = false;
+						if(!empty($this->input->get('redir'))) {
+							$redir = $this->input->get('redir');
+						}
+						$data['redir'] = $redir;
+
 						$data['text'] = "해당 문서가 존재하지 않습니다.<br><a href='/edit/".$name."'>새로 만들 수도 있어요!</a>";
 						$this->load->view(skin.'/view', $data);
 					}
@@ -288,7 +301,75 @@ class Wiki extends MX_Controller {
 		  $this->load->view(skin.'/error', $data);
 	  } else {
 		  if ($this->input->post('desc')) {
-			//삭제는 여기서 동작시키면 됩니다.
+			  $desc = "[삭제]".$this->input->post('desc');
+			$text = "";
+				$query = $this->db->query("SELECT * FROM `revision` WHERE `doc_name` = '$ename' ORDER BY r_num DESC LIMIT 1");
+				foreach ($query->result() as $row) {
+					$revision = $row->r_num + 1;
+					$old_text = $row->doc_text;
+					$temp = mb_strlen($old_text, 'utf-8');
+					$text1 = mb_strlen($text, 'utf-8');
+					$hello = $temp - $text1;
+					if (substr($hello, 0, 1) == '-') {
+						$hello = '+'.abs($hello);
+					} else {
+						$hello = '-'.$hello;
+					}
+				}
+			$this->db->where('title', $ename);
+			$this->db->delete('back_link');
+			$this->db->where('title', $ename);
+					$this->db->delete('document');
+					preg_match_all('/\[\[(.*?)\]\]/',$text, $result);
+					preg_match_all('/\#(.*?) (.*?)/',$text,$redirect);
+					if(!empty($redirect[0][0])){
+					$re_link= explode($redirect[0][0],$text);
+					echo $re_link[1];
+					$re_data = array(
+					        'title' => $ename,
+					         'link' => "#".$re_link[1]
+					);
+					$this->db->insert('back_link',$re_data);
+					}
+					$link=[];
+					foreach($result[1] as $data){
+						if(strpos($data, '|') !== false) {
+						$data = strstr($data,'|',true);
+						}
+						array_push($link,$data);
+					}
+					$link = array_unique($link);
+					foreach($link as $back){
+					$back_data = array(
+					         'title' => $ename,
+					         'link' => $back
+					);
+					$this->db->insert('back_link',$back_data);
+					}
+					if ($this->session->userdata('username')) {
+						$user = $this->session->userdata('username');
+					} else {
+						$user = $_SERVER['REMOTE_ADDR'];
+					}
+					$data = array(
+							'doc_name' => $ename,
+							'r_num' => $revision,
+							'r_desc' => $desc,
+							'doc_text' => $text,
+							'change_int' => $hello,
+							'user' => $user
+					);
+
+					$this->db->insert('revision', $data);
+					// RecentChange 기록
+					$data = array(
+							'text' => $ename,
+							'r_num' => $revision,
+							'change_int' => $hello,
+							'user' => $user
+					);
+
+					$this->db->insert('recentchange', $data);
 		  } else {
 			  echo "<script type='text/javascript'>alert('문서를 삭제하는 이유를 적어주세요.');location.href='/delete/$name';</script>";
 		  }
@@ -414,10 +495,11 @@ public function revert($name = false,$rev = false) {
 				}
 				$str = strcmp($old_text, $text);
 					$data = array(
+							'title' => $ename,
 							'text' => $text,
 					);
-					$this->db->where('title', $ename);
-					$this->db->update('document', $data);
+					$this->db->delete('document', array('title' => $ename));  // Produces: // DELETE FROM mytable  // WHERE id = $id
+					$this->db->insert('document', $data);
 					$this->db->where('title', $ename);
 					$this->db->delete('back_link');
 					preg_match_all('/\[\[(.*?)\]\]/',$text, $result);
@@ -511,9 +593,6 @@ $data['title'] = "' ".$ename." ' 문서 되돌리기";
 		$this->load->view(skin.'/diff', $data);
 	}
 
-	public function discuss () {
-
-	}
 	public function xref($name = false){
 		$data['title'] = "'".urldecode($name)."' 문서 역링크";
 		$data['otitle'] = urldecode($name);
@@ -530,6 +609,11 @@ $data['title'] = "' ".$ename." ' 문서 되돌리기";
 		$data['title'] = "최근 변경내역";
 		$data['query'] = $this->db->query("SELECT * FROM `recentchange` ORDER BY id DESC");
 		$this->load->view(skin.'/recentchange', $data);
+	}
+	public function rd() {
+		$data['title'] = "최근 토론내역";
+		$data['query'] = $this->db->query("SELECT * FROM `discuss_list` ORDER BY id DESC");
+		$this->load->view(skin.'/recentdiscuss', $data);
 	}
 
 	public function search() {

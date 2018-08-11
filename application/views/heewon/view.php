@@ -10,7 +10,8 @@
           <h1 class="blog-post-title">
             <?php echo $title; ?> <?php if ($rev) { ?><small>( <?php echo $rev; ?>번째 판 )</small><?php } ?>
             <div class="btn-group pull-right" role="group" aria-label="content-tools">
-                  <a href="/edit/<?php echo urlencode($title); ?>" class="btn btn-sm btn-outline-secondary">편집</a>
+            <a href="/edit/<?php echo urlencode($title); ?>" class="btn btn-sm btn-outline-secondary">편집</a>
+            <a href="/discuss/d/<?php echo urlencode($title); ?>" class="btn btn-sm btn-outline-secondary">토론</a>
 				  <a href="/history/<?php echo urlencode($title); ?>" class="btn btn-sm btn-outline-secondary">역사</a>
 				 <a href="/xref/<?php echo urlencode($title); ?>" class="btn btn-sm btn-outline-secondary">역링크</a>
                   <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
@@ -19,6 +20,7 @@
                 </div>
             </div>
           </h1>
+          <h4><?php if ($redir) {echo $redir."에서 넘어옴";}?></h4>
           <?php print_r ($text); ?>
 </div>
         </article>

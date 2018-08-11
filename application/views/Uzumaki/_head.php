@@ -6,10 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.ddark.kr/fa/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="/assets/aa.min.css" type="text/css">
-  <link rel="stylesheet" href="/assets/custom.css" type="text/css">
-  <link rel="stylesheet" href="/assets/responsive.css" type="text/css">
-  <link rel="stylesheet" href="/assets/wiki.css" type="text/css">
+  <link rel="stylesheet" href="/assets/<?php echo skin;?>/aa.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/<?php echo skin;?>/custom.css" type="text/css">
+  <link rel="stylesheet" href="/assets/<?php echo skin;?>/responsive.css" type="text/css">
+  <link rel="stylesheet" href="/assets/<?php echo skin;?>/wiki.css" type="text/css">
   <link rel="stylesheet" href="https://cdn.ddark.kr/fonts/notosanskr/notosanskr.css" type="text/css">
   <?php if(isset($s_head)) {echo $s_head;} ?>
 </head>

@@ -22,9 +22,9 @@
   <script src="https://cdn.ddark.kr/js/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.ddark.kr/js/popper.js/dist/umd/popper.min.js"></script>
   <script src="https://cdn.ddark.kr/bootstrap/bootstrap.min.js"></script>
-  <script async  src="/assets/pjax.js"></script>
-  <script async  src="/assets/ddark.js"></script>
-  <script async src="/assets/js/discuss.js"></script>
+  <script async  src="/assets/<?php echo skin;?>/pjax.js"></script>
+  <script async  src="/assets/<?php echo skin;?>/ddark.js"></script>
+  <script async src="/assets/<?php echo skin;?>/discuss.js"></script>
   <?php if(isset($s_foot)) {echo $s_foot;} ?>
 </body>
 

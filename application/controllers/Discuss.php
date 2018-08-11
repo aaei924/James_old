@@ -28,7 +28,8 @@ class Discuss extends MX_Controller {
 			}
 
 			$this->db->simple_query("INSERT INTO discuss_list(doc_name, title, user, acl, status) VALUES('$title','$ptitle','$user', 'default', 'active')");
-			echo '꺄우우 POST값들어온거에요';
+			echo "<script>location.href='/discuss/d/$title';</script>";
+
 		}
 		$data['title'] = '토론';
 		$data['otitle'] = $title;
@@ -49,15 +50,15 @@ class Discuss extends MX_Controller {
 				$user = $this->session->userdata('username');
 			}
 
-			$aaa = $this->db->select('*')->where('discuss_id', $id)->order_by('v_id', 'desc')->limit(1)->get('discuss_content');
+			$aaa = $this->db->select('*')->where('discuss_id', $id)->order_by('id', 'desc')->limit(1)->get('discuss_content');
 			if($aaa->num_rows() > 0){
 				foreach ($aaa->result() as $row) { // 7 5.1.2.3.4.7.6			
-					$num = $row->v_id + 1;
-					$this->db->simple_query("INSERT INTO discuss_content(v_id, type, discuss_id, text, status, user) 
+					$num = $row->c_id + 1;
+					$this->db->simple_query("INSERT INTO discuss_content(c_id, type, discuss_id, text, status, user) 
 					VALUES('$num','', '$id','$ptext', 'default', '$user')");
 				}
 			} else {
-					$this->db->simple_query("INSERT INTO discuss_content(v_id, type, discuss_id, text, status, user) 
+					$this->db->simple_query("INSERT INTO discuss_content(c_id, type, discuss_id, text, status, user) 
 					VALUES('1','', '$id','$ptext', 'default', '$user')");
 			}
 		}

@@ -5,13 +5,16 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdn.ddark.kr/fa/4.7.0/css/font-awesome.min.css" type="text/css">
-      <!--<link rel="stylesheet" href="/assets/aa.min.css" type="text/css">
-         <link rel="stylesheet" href="/assets/custom.css" type="text/css">
-         <link rel="stylesheet" href="/assets/responsive.css" type="text/css">
-         <link rel="stylesheet" href="/assets/wiki.css" type="text/css">-->
       <link rel="stylesheet" href="https://cdn.ddark.kr/fonts/notosanskr/notosanskr.css" type="text/css">
-      <link rel="stylesheet" href="/assets/bootstrap.min.css">
-      <link rel="stylesheet" href="/assets/ciel_wiki.css">
+      <link rel="stylesheet" href="/assets/<?php echo skin;?>/bootstrap.min.css">
+      <link rel="stylesheet" href="/assets/<?php echo skin;?>/ciel_wiki.css">
+      <link rel="stylesheet" href="/assets/<?php echo skin;?>/wiki.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+      <script src="https://files.ddark.kr/js/jquery-3.3.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 	  <?php if(isset($s_head)) {echo $s_head;} ?>
    </head
    <body>
@@ -32,5 +35,5 @@
             </div>
          </header>
          <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between"> <a class="p-2 text-muted" href="#">최근 변경</a> <a class="p-2 text-muted" href="#">최근 토론</a> <a class="p-2 text-muted" href="#">게시판</a> <a class="p-2 text-muted" href="#">관리</a> <a class="p-2 text-muted" href="#">섹스</a> <a class="p-2 text-muted" href="#">러그ㅇㄴ</a> <a class="p-2 text-muted" href="#">앙기모띠</a> <a class="p-2 text-muted" href="#">이이</a> <a class="p-2 text-muted" href="#">이이</a> <a class="p-2 text-muted" href="#">ㄴㄴ</a> <a class="p-2 text-muted" href="#">ㅇㅇㅇ</a> <a class="p-2 text-muted" href="#">섹스</a> </nav>
+            <nav class="nav d-flex justify-content-between"> <a class="p-2 text-muted" href="/RecentChanges">최근 변경</a> <a class="p-2 text-muted" href="/RecentDiscuss">최근 토론</a> <a class="p-2 text-muted" href="#">게시판</a> <a class="p-2 text-muted" href="/a/license">라이센스</a> <a class="p-2 text-muted" href="/a/license">위키라이브</a></nav>
          </div>

@@ -3,11 +3,7 @@
           <h1 class="title">
 <?php echo $title; ?> <?php if ($rev) { ?><small>( <?php echo $rev; ?>번째 판 )</small><?php } ?>
 <div class="btn-group pull-right" role="group" aria-label="content-tools">
-                  <a href="/w/<?php echo urlencode($otitle); ?>" class="btn btn-white tools-btn">돌아가기</a> 
-                  <button type="button" class="btn btn-white tools-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
-                <div class="dropdown-menu dropdown-menu-right" role="menu">
-                  <a href="#" class="dropdown-item">메뉴다 썅년들아</a>
-                </div>
+                  <a href="/w/<?php echo urlencode($otitle); ?>" class="btn btn-sm btn-outline-secondary">돌아가기</a> 
             </div>
           </h1>
 		  <form method="post">

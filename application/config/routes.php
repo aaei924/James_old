@@ -84,3 +84,4 @@ $route['move'] = "wiki/move";
 $route['move/(.+)'] = "wiki/move/$1";
 
 $route['RecentChanges'] = "wiki/rc";
+$route['RecentDiscuss'] = "wiki/rd";

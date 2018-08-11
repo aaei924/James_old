@@ -28,7 +28,8 @@ class A extends MX_Controller {
 	public function login()
 	{
 		if ($this->session->userdata('username') != '') {
-			echo "<script type='text/javascript'>alert('이미 로그인 되어 있는듯?');location.href='/admin/';</script>";
+            $user = $this->session->userdata('username');
+			echo "<script type='text/javascript'>alert('이미 로그인 되어 있는듯?');location.href='/w/사용자:$user';</script>";
 		}
         $username = $this->input->post('username', true);
         $password = $this->input->post('passwd', true);

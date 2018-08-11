@@ -4,7 +4,7 @@
 		  <h2>DDark Wiki Engine <small>v<?php echo dwe_ver; ?></small></h2>
 		  <div class="p-1">DDark Wiki Engine 의 메인 개발자들을 소개합니다.</div>
 		  <ul class="mb-1">
-			<li>정도현 (도다) - <span class="badge badge-secondary text-white p-1">프로젝트 담당자</span> <span class="badge badge-danger p-1">개발자</span></li>
+			<li>정도현 (도다) - <span class="badge badge-danger p-1">개발자</span></li>
 			<li>강희원 (Heewon) - <span class="badge badge-danger p-1">개발자</span></li>
 		  </ul>
 	      <hr>
